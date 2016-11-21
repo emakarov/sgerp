@@ -1,4 +1,5 @@
 import os
+from os.path import isfile, join
 import json
 import csv
 import pyproj
@@ -24,7 +25,7 @@ def index(request):
 
 
 def vehicle_list_from_logs(request):
-    logs = os.listdir(settings.VEHICLE_LOGS_DIR)
+    logs = [f for f in os.listdir(settings.VEHICLE_LOGS_DIR) if isfile(join(settings.VEHICLE_LOGS_DIR, f))]
     return JsonResponse({'vehicles': logs})
 
 
