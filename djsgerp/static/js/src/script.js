@@ -32,7 +32,7 @@ function getRandomColor() {
 var GantryCross = Backbone.Model.extend({
     zoomto: function(_map) {
       var coordinates = [this.attributes.a.lon, this.attributes.a.lat];
-      _map.flyTo({center: coordinates, zoom: 17});
+      _map.flyTo({center: coordinates, zoom: 18});
     }
 });
 
@@ -137,8 +137,19 @@ var Vehicle = Backbone.Model.extend({
 
   },
   show_track_data: function(data, _map){
-    this.add_data(data);
-    this.show_track(_map);
+    $('#'+this.cid+'_showmapbtn').html("Hide track");
+    var layer = _map.getLayer(this.attributes.id);
+    if (layer === undefined){
+      this.add_data(data);
+      this.show_track(_map);
+    } else {
+      _map.setLayoutProperty(this.attributes.id, 'visibility', 'visible');
+    }
+  },
+  hide_track_data: function(_map) {
+    this.attributes.shown_track = false;
+    _map.setLayoutProperty(this.attributes.id, 'visibility', 'none');
+    $('#'+this.cid+'_showmapbtn').html("Show track");
   }
 })
 
@@ -147,12 +158,12 @@ map.on('load', function() {
   $.get('/erp/vehicle_list_from_logs/', function(data) {
     var vehicles = data.vehicles;
     for (var v in vehicles){
-      var line = '<div style="padding:5px;border-bottom:1px solid #eee;font-size:11px;"><div>' + vehicles[v] + '</div>';
-      line += '<div><span class="cursored" onclick="app.showtrack(\''+vehicles[v]+'\')" style="margin-right:20px">Show on map</span>'
-      line += '<span class="cursored" onclick="app.showerpcost(\''+vehicles[v]+'\')">ERP cost</span></div></div>';
-      $("#vehicle_logs_list").append(line);
       var vehicle = new Vehicle({id: vehicles[v]});
       app.collections['vehicles'].add(vehicle);
+      var line = '<div style="padding:5px;border-bottom:1px solid #eee;font-size:11px;"><div>' + vehicles[v] + '</div>';
+      line += '<div><span id="'+vehicle.cid+'_showmapbtn" class="cursored" onclick="app.showtrack(this, \''+vehicles[v]+'\')" style="margin-right:20px">Show track</span>'
+      line += '<span class="cursored" onclick="app.showerpcost(\''+vehicles[v]+'\')">ERP cost</span></div></div>';
+      $("#vehicle_logs_list").append(line);
     }
   });
 
@@ -195,17 +206,27 @@ map.on('load', function() {
 
 });
 
-app.showtrack = function(f){
-
-  $.get('/erp/matchmake/?q='+f, function(data) {
-    app.collections['vehicles'].where({'id':f})[0].show_track_data(data.data, app.map);
-  });
-  
+app.showtrack = function(el, f){
+  if ( $(el).hasClass('disabled') ){
+    return;
+  }
+  $(el).addClass('disabled');
+  if ( app.collections['vehicles'].where({'id':f})[0].attributes.shown_track != true) {
+    app.collections['vehicles'].where({'id':f})[0].attributes.shown_track = true;
+    $.get('/erp/matchmake/?q='+f, function(data) {
+      $(el).removeClass('disabled');
+      app.collections['vehicles'].where({'id':f})[0].show_track_data(data.data, app.map);
+    });
+  } else {
+    $(el).removeClass('disabled');
+    app.collections['vehicles'].where({'id':f})[0].hide_track_data(app.map);  
+  }
 }
 
 app.showerpcost = function(f){
   $("#erp_box_holder").show();
   $.get('/erp/crossgantry/?q='+f, function(data){
+    $("#vehicle_id_erp_holder").html(f);
     for (var i in data.data) {
       var gc = new GantryCross(data.data[i]);
       app.collections['gantrycrosses'].add(gc);
