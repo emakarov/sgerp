@@ -111,12 +111,14 @@ def crossgantry(request):
     prev_g = None
     gantrycache = []
     gantryidx = []
+    gantrylatlons = []
     for g in gantrypositions:
         p1 = (utm.from_latlon(g.lat, g.lon)[0], utm.from_latlon(g.lat, g.lon)[1])
         p2 = (utm.from_latlon(g.lat2, g.lon2)[0], utm.from_latlon(g.lat2, g.lon2)[1])
         gantryline = LineString([p1, p2])
         gantrycache.append(gantryline)
         gantryidx.append(g.id)
+        gantrylatlons.append({'lat': (g.lat + g.lat2)/2, 'lon': (g.lon + g.lon2)/2})
     gantrycrosses = []
     for c in corrected_res:
         if prev is not None:
@@ -127,7 +129,8 @@ def crossgantry(request):
             idx_intersects = [i for i in range(len(intersects)) if intersects[i]]
             if idx_intersects:
                 gantry_id = gantryidx[idx_intersects[0]]
-                gantrycrosses.append({'gantry_id': gantry_id, 'b': c, 'a': prev})
+                gantry_pos = gantrylatlons[idx_intersects[0]]
+                gantrycrosses.append({'gantry_id': gantry_id, 'gantry_position': gantry_pos, 'b': c, 'a': prev})
         prev = c
     return JsonResponse({'data': gantrycrosses})
 

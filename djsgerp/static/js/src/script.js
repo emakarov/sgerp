@@ -31,7 +31,7 @@ function getRandomColor() {
 
 var GantryCross = Backbone.Model.extend({
     zoomto: function(_map) {
-      var coordinates = [this.attributes.a.lon, this.attributes.a.lat];
+      var coordinates = [parseFloat(this.attributes.gantry_position.lon), parseFloat(this.attributes.gantry_position.lat)];
       _map.flyTo({center: coordinates, zoom: 18});
     }
 });
