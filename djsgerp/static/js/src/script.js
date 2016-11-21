@@ -142,7 +142,7 @@ var Vehicle = Backbone.Model.extend({
   }
 })
 
-$(document).ready( function(){
+map.on('load', function() {
 
   $.get('/erp/vehicle_list_from_logs/', function(data) {
     var vehicles = data.vehicles;
