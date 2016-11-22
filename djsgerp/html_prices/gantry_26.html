@@ -1,0 +1,125 @@
+<script type="text/javascript">
+function display()
+{
+	 var index = document.myForm.vehicleType.selectedIndex;
+	 index = parseInt(index);
+
+	 if(index == 0)
+	 {
+		 document.getElementById("one").style.visibility = "visible";
+		 document.getElementById("two").style.visibility = "hidden";
+		 document.getElementById("three").style.visibility = "hidden";
+		 document.getElementById("four").style.visibility = "hidden";
+		 document.getElementById("five").style.visibility = "hidden";
+		 document.getElementById("six").style.visibility = "hidden";
+		 document.getElementById("seven").style.visibility = "hidden";
+		 document.getElementById("eight").style.visibility = "hidden";
+	 }
+	 else if(index == 1)
+	 {
+		 document.getElementById("one").style.visibility = "hidden";
+		 document.getElementById("two").style.visibility = "visible";
+		 document.getElementById("three").style.visibility = "hidden";
+		 document.getElementById("four").style.visibility = "hidden";
+		 document.getElementById("five").style.visibility = "hidden";
+		 document.getElementById("six").style.visibility = "hidden";
+		 document.getElementById("seven").style.visibility = "hidden";
+		 document.getElementById("eight").style.visibility = "hidden";
+	 }
+	 else if(index == 2)
+	 {
+		 document.getElementById("one").style.visibility = "hidden";
+		 document.getElementById("two").style.visibility = "hidden";
+		 document.getElementById("three").style.visibility = "visible";
+		 document.getElementById("four").style.visibility = "hidden";
+		 document.getElementById("five").style.visibility = "hidden";
+		 document.getElementById("six").style.visibility = "hidden";
+		 document.getElementById("seven").style.visibility = "hidden";
+		 document.getElementById("eight").style.visibility = "hidden";
+	 }
+	 else if(index == 3)
+	 {
+		 document.getElementById("one").style.visibility = "hidden";
+		 document.getElementById("two").style.visibility = "hidden";
+		 document.getElementById("three").style.visibility = "hidden";
+		 document.getElementById("four").style.visibility = "visible";
+		 document.getElementById("five").style.visibility = "hidden";
+		 document.getElementById("six").style.visibility = "hidden";
+		 document.getElementById("seven").style.visibility = "hidden";
+		 document.getElementById("eight").style.visibility = "hidden";
+	 }
+	 else if(index == 4)
+	 {
+		 document.getElementById("one").style.visibility = "hidden";
+		 document.getElementById("two").style.visibility = "hidden";
+		 document.getElementById("three").style.visibility = "hidden";
+		 document.getElementById("four").style.visibility = "hidden";
+		 document.getElementById("five").style.visibility = "visible";
+		 document.getElementById("six").style.visibility = "hidden";
+		 document.getElementById("seven").style.visibility = "hidden";
+		 document.getElementById("eight").style.visibility = "hidden";
+	 }
+	 else if(index == 5)
+	 {
+		 document.getElementById("one").style.visibility = "hidden";
+		 document.getElementById("two").style.visibility = "hidden";
+		 document.getElementById("three").style.visibility = "hidden";
+		 document.getElementById("four").style.visibility = "hidden";
+		 document.getElementById("five").style.visibility = "hidden";
+		 document.getElementById("six").style.visibility = "visible";
+		 document.getElementById("seven").style.visibility = "hidden";
+		 document.getElementById("eight").style.visibility = "hidden";
+	 }
+	 else if(index == 6)
+	 {
+		 document.getElementById("one").style.visibility = "hidden";
+		 document.getElementById("two").style.visibility = "hidden";
+		 document.getElementById("three").style.visibility = "hidden";
+		 document.getElementById("four").style.visibility = "hidden";
+		 document.getElementById("five").style.visibility = "hidden";
+		 document.getElementById("six").style.visibility = "hidden";
+		 document.getElementById("seven").style.visibility = "visible";
+		 document.getElementById("eight").style.visibility = "hidden";
+	 }
+	 else if(index == 7)
+	 {
+		 document.getElementById("one").style.visibility = "hidden";
+		 document.getElementById("two").style.visibility = "hidden";
+		 document.getElementById("three").style.visibility = "hidden";
+		 document.getElementById("four").style.visibility = "hidden";
+		 document.getElementById("five").style.visibility = "hidden";
+		 document.getElementById("six").style.visibility = "hidden";
+		 document.getElementById("seven").style.visibility = "hidden";
+		 document.getElementById("eight").style.visibility = "visible";
+	 }
+}
+</script>
+
+<script src="//assets.adobedtm.com/1eb75970c001743639c14f07fc4541b489b1d558/satelliteLib-28ee5b80b3714f072ee8989e12d7f0fe3e40f333.js"></script><style type="text/css">
+	.iframestyle {position: absolute; top: 40px; left:10px; width:220px; height:500px; border:1; scrolling:no;}
+	.selectstyle {font-size:7pt;}
+</style>
+
+<body onLoad="javascript:display();">
+<form name="myForm">
+<select class="selectstyle" name="vehicleType" size="1" onChange="javascript:display();">
+<option value="one">Cars/Light Goods/Taxis (Weekdays)</option>
+<option value="two">Cars/Light Goods/Taxis (Saturday)</option>
+<option value="three">Motorcycles (Weekdays)</option>
+<option value="four">Motorcycles (Saturday)</option>
+<option value="five">Heavy Goods/Small Buses (Weekdays)</option>
+<option value="six">Heavy Goods/Small Buses (Saturday)</option>
+<option value="seven">Very Heavy Goods/Big Buses (Weekdays)</option>
+<option value="eight">Very Heavy Goods/Big Buses (Saturday)</option></select><br><br>
+</form>
+
+<iframe id="one" class="iframestyle" src="../tables/26_table_0.html" frameborder="0"></iframe>
+<iframe id="two" class="iframestyle" src="../tables/26_table_1.html" frameborder="0"></iframe>
+<iframe id="three" class="iframestyle" src="../tables/26_table_2.html" frameborder="0"></iframe>
+<iframe id="four" class="iframestyle" src="../tables/26_table_3.html" frameborder="0"></iframe>
+<iframe id="five" class="iframestyle" src="../tables/26_table_4.html" frameborder="0"></iframe>
+<iframe id="six" class="iframestyle" src="../tables/26_table_5.html" frameborder="0"></iframe>
+<iframe id="seven" class="iframestyle" src="../tables/26_table_6.html" frameborder="0"></iframe>
+<iframe id="eight" class="iframestyle" src="../tables/26_table_7.html" frameborder="0"></iframe>
+<script type="text/javascript">_satellite.pageBottom();</script></body>
+

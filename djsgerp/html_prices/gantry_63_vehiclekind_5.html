@@ -1,0 +1,102 @@
+<script type="text/javascript">
+var d = new Date();
+var curr_hour = d.getHours();
+var curr_min = d.getMinutes();
+var oCell1 = "";
+curr_min = curr_min + "";
+
+if (curr_min.length == 1)
+{
+	 curr_min = "0" + curr_min;
+}
+
+var curr_time = curr_hour + "" + curr_min;
+
+function setUp()
+{
+	 // 0700 - 1230
+	 if(curr_time >= 700 && curr_time < 1230)
+	 {
+		 oCell1 = new setObj('row5', '#FFFF99', 'black');
+	 }
+
+	 // 1230 - 1235
+	 else if(curr_time >= 1230 && curr_time < 1235)
+	 {
+		 oCell1 = new setObj('row6', '#FFFF99', 'black');
+	 }
+
+	 // 1235 - 1830
+	 else if(curr_time >= 1235 && curr_time < 1830)
+	 {
+		 oCell1 = new setObj('row7', '#FFFF99', 'black');
+	 }
+
+	 // 1830 - 1835
+	 else if(curr_time >= 1830 && curr_time < 1835)
+	 {
+		 oCell1 = new setObj('row8', '#FFFF99', 'black');
+	 }
+
+	 // 1835 - 1955
+	 else if(curr_time >= 1835 && curr_time < 1955)
+	 {
+		 oCell1 = new setObj('row9', '#FFFF99', 'black');
+	 }
+
+	 // 1955 - 2000
+	 else if(curr_time >= 1955 && curr_time < 2000)
+	 {
+		 oCell1 = new setObj('row10', '#FFFF99', 'black');
+	 }
+
+	 // 2000 - 2230
+	 else if(curr_time >= 2000 && curr_time <= 2230)
+	 {
+		 oCell1 = new setObj('row11', '#FFFF99', 'black');
+	 }
+
+} 
+
+onload = setUp; 
+
+function setObj(id,bgCol,color)
+{
+	 if(document.getElementById)
+	 {
+		 this.obj = document.getElementById(id).style;
+		 this.obj.backgroundColor=bgCol;
+		 this.obj.color=color;
+	 }
+	 else if(document.all)
+	 {
+		 this.obj = document.all[id].style;
+		 this.obj.backgroundColor=bgCol;
+		 this.obj.color=color;
+	 }
+	 else if(document.layers)
+	 {
+		 this.obj = document.layers[id];
+		 this.obj.bgColor=bgCol;
+		 this.obj.color=color;
+	 }
+	 return this.obj;
+
+}
+</script>
+
+
+<script src="//assets.adobedtm.com/1eb75970c001743639c14f07fc4541b489b1d558/satelliteLib-28ee5b80b3714f072ee8989e12d7f0fe3e40f333.js"></script><style type="text/css">
+	 .styler {background-color : #e8fefe; position: absolute; top: 0px; left:0px; font-size:6.5pt;}
+</style>
+
+<table class="styler" width="180" border="1">
+	 <tr id="row5"><td>07:00 - 12:30</td><td>$0.00</td></tr>
+	 <tr id="row6"><td>12:30 - 12:35</td><td>$0.75</td></tr>
+	 <tr id="row7"><td>12:35 - 18:30</td><td>$1.50</td></tr>
+	 <tr id="row8"><td>18:30 - 18:35</td><td>$2.25</td></tr>
+	 <tr id="row9"><td>18:35 - 19:55</td><td>$3.00</td></tr>
+	 <tr id="row10"><td>19:55 - 20:00</td><td>$1.50</td></tr>
+	 <tr id="row11"><td>20:00 - 22:30</td><td>$0.00</td></tr>
+</table>
+<script type="text/javascript">_satellite.pageBottom();</script>

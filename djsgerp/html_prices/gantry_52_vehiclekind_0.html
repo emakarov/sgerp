@@ -1,0 +1,158 @@
+<script type="text/javascript">
+var d = new Date();
+var curr_hour = d.getHours();
+var curr_min = d.getMinutes();
+var oCell1 = "";
+curr_min = curr_min + "";
+
+if (curr_min.length == 1)
+{
+	 curr_min = "0" + curr_min;
+}
+
+var curr_time = curr_hour + "" + curr_min;
+
+function setUp()
+{
+	 // 0700 - 0730
+	 if(curr_time >= 700 && curr_time < 730)
+	 {
+		 oCell1 = new setObj('row0', '#FFFF99', 'black');
+	 }
+
+	 // 0730 - 0735
+	 else if(curr_time >= 730 && curr_time < 735)
+	 {
+		 oCell1 = new setObj('row1', '#FFFF99', 'black');
+	 }
+
+	 // 0735 - 0755
+	 else if(curr_time >= 735 && curr_time < 755)
+	 {
+		 oCell1 = new setObj('row2', '#FFFF99', 'black');
+	 }
+
+	 // 0755 - 0800
+	 else if(curr_time >= 755 && curr_time < 800)
+	 {
+		 oCell1 = new setObj('row3', '#FFFF99', 'black');
+	 }
+
+	 // 0800 - 0830
+	 else if(curr_time >= 800 && curr_time < 830)
+	 {
+		 oCell1 = new setObj('row4', '#FFFF99', 'black');
+	 }
+
+	 // 0830 - 0835
+	 else if(curr_time >= 830 && curr_time < 835)
+	 {
+		 oCell1 = new setObj('row5', '#FFFF99', 'black');
+	 }
+
+	 // 0835 - 0855
+	 else if(curr_time >= 835 && curr_time < 855)
+	 {
+		 oCell1 = new setObj('row6', '#FFFF99', 'black');
+	 }
+
+	 // 0855 - 0900
+	 else if(curr_time >= 855 && curr_time < 900)
+	 {
+		 oCell1 = new setObj('row7', '#FFFF99', 'black');
+	 }
+
+	 // 0900 - 0925
+	 else if(curr_time >= 900 && curr_time < 925)
+	 {
+		 oCell1 = new setObj('row8', '#FFFF99', 'black');
+	 }
+
+	 // 0925 - 0930
+	 else if(curr_time >= 925 && curr_time < 930)
+	 {
+		 oCell1 = new setObj('row9', '#FFFF99', 'black');
+	 }
+
+	 // 0930 - 1730
+	 else if(curr_time >= 930 && curr_time < 1730)
+	 {
+		 oCell1 = new setObj('row10', '#FFFF99', 'black');
+	 }
+
+	 // 1730 - 1735
+	 else if(curr_time >= 1730 && curr_time < 1735)
+	 {
+		 oCell1 = new setObj('row11', '#FFFF99', 'black');
+	 }
+
+	 // 1735 - 1825
+	 else if(curr_time >= 1735 && curr_time < 1825)
+	 {
+		 oCell1 = new setObj('row12', '#FFFF99', 'black');
+	 }
+
+	 // 1825 - 1830
+	 else if(curr_time >= 1825 && curr_time < 1830)
+	 {
+		 oCell1 = new setObj('row13', '#FFFF99', 'black');
+	 }
+
+	 // 1830 - 2230
+	 else if(curr_time >= 1830 && curr_time <= 2230)
+	 {
+		 oCell1 = new setObj('row14', '#FFFF99', 'black');
+	 }
+
+} 
+
+onload = setUp; 
+
+function setObj(id,bgCol,color)
+{
+	 if(document.getElementById)
+	 {
+		 this.obj = document.getElementById(id).style;
+		 this.obj.backgroundColor=bgCol;
+		 this.obj.color=color;
+	 }
+	 else if(document.all)
+	 {
+		 this.obj = document.all[id].style;
+		 this.obj.backgroundColor=bgCol;
+		 this.obj.color=color;
+	 }
+	 else if(document.layers)
+	 {
+		 this.obj = document.layers[id];
+		 this.obj.bgColor=bgCol;
+		 this.obj.color=color;
+	 }
+	 return this.obj;
+
+}
+</script>
+
+
+<script src="//assets.adobedtm.com/1eb75970c001743639c14f07fc4541b489b1d558/satelliteLib-28ee5b80b3714f072ee8989e12d7f0fe3e40f333.js"></script><style type="text/css">
+	 .styler {background-color : #e8fefe; position: absolute; top: 0px; left:0px; font-size:6.5pt;}
+</style>
+
+<table class="styler" width="180" border="1">
+	 <tr id="row0"><td>07:00 - 07:30</td><td>$0.00</td></tr>
+	 <tr id="row1"><td>07:30 - 07:35</td><td>$1.00</td></tr>
+	 <tr id="row2"><td>07:35 - 07:55</td><td>$2.00</td></tr>
+	 <tr id="row3"><td>07:55 - 08:00</td><td>$1.50</td></tr>
+	 <tr id="row4"><td>08:00 - 08:30</td><td>$1.00</td></tr>
+	 <tr id="row5"><td>08:30 - 08:35</td><td>$2.00</td></tr>
+	 <tr id="row6"><td>08:35 - 08:55</td><td>$3.00</td></tr>
+	 <tr id="row7"><td>08:55 - 09:00</td><td>$2.50</td></tr>
+	 <tr id="row8"><td>09:00 - 09:25</td><td>$2.00</td></tr>
+	 <tr id="row9"><td>09:25 - 09:30</td><td>$1.00</td></tr>
+	 <tr id="row10"><td>09:30 - 17:30</td><td>$0.00</td></tr>
+	 <tr id="row11"><td>17:30 - 17:35</td><td>$1.00</td></tr>
+	 <tr id="row12"><td>17:35 - 18:25</td><td>$2.00</td></tr>
+	 <tr id="row13"><td>18:25 - 18:30</td><td>$1.00</td></tr>
+	 <tr id="row14"><td>18:30 - 22:30</td><td>$0.00</td></tr>
+</table>
+<script type="text/javascript">_satellite.pageBottom();</script>

@@ -127,3 +127,5 @@ MAPBOX_KEY = 'pk.eyJ1IjoiZW1ha2Fyb3YiLCJhIjoiMDFER0JicyJ9.0yaID4RS09gxfY4uyERhVQ
 os.environ["MAPBOX_ACCESS_TOKEN"] = MAPBOX_KEY
 ERP_RATES_FILE = os.path.join(BASE_DIR, 'erprates.json')
 ERP_GEODATA = os.path.join(BASE_DIR, 'onemaperp.json')
+HTML_PRICES_DIR = os.path.join(BASE_DIR, 'djsgerp/html_prices')
+

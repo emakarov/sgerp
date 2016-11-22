@@ -1,0 +1,186 @@
+<script type="text/javascript">
+var d = new Date();
+var curr_hour = d.getHours();
+var curr_min = d.getMinutes();
+var oCell1 = "";
+curr_min = curr_min + "";
+
+if (curr_min.length == 1)
+{
+	 curr_min = "0" + curr_min;
+}
+
+var curr_time = curr_hour + "" + curr_min;
+
+function setUp()
+{
+	 // 0700 - 0800
+	 if(curr_time >= 700 && curr_time < 800)
+	 {
+		 oCell1 = new setObj('row0', '#FFFF99', 'black');
+	 }
+
+	 // 0800 - 0805
+	 else if(curr_time >= 800 && curr_time < 805)
+	 {
+		 oCell1 = new setObj('row1', '#FFFF99', 'black');
+	 }
+
+	 // 0805 - 0830
+	 else if(curr_time >= 805 && curr_time < 830)
+	 {
+		 oCell1 = new setObj('row2', '#FFFF99', 'black');
+	 }
+
+	 // 0830 - 0900
+	 else if(curr_time >= 830 && curr_time < 900)
+	 {
+		 oCell1 = new setObj('row3', '#FFFF99', 'black');
+	 }
+
+	 // 0900 - 0925
+	 else if(curr_time >= 900 && curr_time < 925)
+	 {
+		 oCell1 = new setObj('row4', '#FFFF99', 'black');
+	 }
+
+	 // 0925 - 0930
+	 else if(curr_time >= 925 && curr_time < 930)
+	 {
+		 oCell1 = new setObj('row5', '#FFFF99', 'black');
+	 }
+
+	 // 0930 - 0955
+	 else if(curr_time >= 930 && curr_time < 955)
+	 {
+		 oCell1 = new setObj('row6', '#FFFF99', 'black');
+	 }
+
+	 // 0955 - 1000
+	 else if(curr_time >= 955 && curr_time < 1000)
+	 {
+		 oCell1 = new setObj('row7', '#FFFF99', 'black');
+	 }
+
+	 // 1000 - 1200
+	 else if(curr_time >= 1000 && curr_time < 1200)
+	 {
+		 oCell1 = new setObj('row8', '#FFFF99', 'black');
+	 }
+
+	 // 1200 - 1205
+	 else if(curr_time >= 1200 && curr_time < 1205)
+	 {
+		 oCell1 = new setObj('row9', '#FFFF99', 'black');
+	 }
+
+	 // 1205 - 1400
+	 else if(curr_time >= 1205 && curr_time < 1400)
+	 {
+		 oCell1 = new setObj('row10', '#FFFF99', 'black');
+	 }
+
+	 // 1400 - 1405
+	 else if(curr_time >= 1400 && curr_time < 1405)
+	 {
+		 oCell1 = new setObj('row11', '#FFFF99', 'black');
+	 }
+
+	 // 1405 - 1455
+	 else if(curr_time >= 1405 && curr_time < 1455)
+	 {
+		 oCell1 = new setObj('row12', '#FFFF99', 'black');
+	 }
+
+	 // 1455 - 1500
+	 else if(curr_time >= 1455 && curr_time < 1500)
+	 {
+		 oCell1 = new setObj('row13', '#FFFF99', 'black');
+	 }
+
+	 // 1500 - 1730
+	 else if(curr_time >= 1500 && curr_time < 1730)
+	 {
+		 oCell1 = new setObj('row14', '#FFFF99', 'black');
+	 }
+
+	 // 1730 - 1800
+	 else if(curr_time >= 1730 && curr_time < 1800)
+	 {
+		 oCell1 = new setObj('row15', '#FFFF99', 'black');
+	 }
+
+	 // 1800 - 1955
+	 else if(curr_time >= 1800 && curr_time < 1955)
+	 {
+		 oCell1 = new setObj('row16', '#FFFF99', 'black');
+	 }
+
+	 // 1955 - 2000
+	 else if(curr_time >= 1955 && curr_time < 2000)
+	 {
+		 oCell1 = new setObj('row17', '#FFFF99', 'black');
+	 }
+
+	 // 2000 - 2230
+	 else if(curr_time >= 2000 && curr_time < 2230)
+	 {
+		 oCell1 = new setObj('row18', '#FFFF99', 'black');
+	 }
+
+} 
+
+onload = setUp; 
+
+function setObj(id,bgCol,color)
+{
+	 if(document.getElementById)
+	 {
+		 this.obj = document.getElementById(id).style;
+		 this.obj.backgroundColor=bgCol;
+		 this.obj.color=color;
+	 }
+	 else if(document.all)
+	 {
+		 this.obj = document.all[id].style;
+		 this.obj.backgroundColor=bgCol;
+		 this.obj.color=color;
+	 }
+	 else if(document.layers)
+	 {
+		 this.obj = document.layers[id];
+		 this.obj.bgColor=bgCol;
+		 this.obj.color=color;
+	 }
+	 return this.obj;
+
+}
+</script>
+
+
+<script src="//assets.adobedtm.com/1eb75970c001743639c14f07fc4541b489b1d558/satelliteLib-28ee5b80b3714f072ee8989e12d7f0fe3e40f333.js"></script><style type="text/css">
+	 .styler {background-color : #e8fefe; position: absolute; top: 0px; left:0px; font-size:6.5pt;}
+</style>
+
+<table class="styler" width="180" border="1">
+	 <tr id="row0"><td>07:00 - 08:00</td><td>$0.00</td></tr>
+	 <tr id="row1"><td>08:00 - 08:05</td><td>$0.50</td></tr>
+	 <tr id="row2"><td>08:05 - 08:30</td><td>$1.00</td></tr>
+	 <tr id="row3"><td>08:30 - 09:00</td><td>$1.25</td></tr>
+	 <tr id="row4"><td>09:00 - 09:25</td><td>$1.00</td></tr>
+	 <tr id="row5"><td>09:25 - 09:30</td><td>$0.75</td></tr>
+	 <tr id="row6"><td>09:30 - 09:55</td><td>$0.50</td></tr>
+	 <tr id="row7"><td>09:55 - 10:00</td><td>$0.25</td></tr>
+	 <tr id="row8"><td>10:00 - 12:00</td><td>$0.00</td></tr>
+	 <tr id="row9"><td>12:00 - 12:05</td><td>$0.25</td></tr>
+	 <tr id="row10"><td>12:05 - 14:00</td><td>$0.50</td></tr>
+	 <tr id="row11"><td>14:00 - 14:05</td><td>$0.75</td></tr>
+	 <tr id="row12"><td>14:05 - 14:55</td><td>$1.00</td></tr>
+	 <tr id="row13"><td>14:55 - 15:00</td><td>$0.75</td></tr>
+	 <tr id="row14"><td>15:00 - 17:30</td><td>$0.50</td></tr>
+	 <tr id="row15"><td>17:30 - 18:00</td><td>$0.25</td></tr>
+	 <tr id="row16"><td>18:00 - 19:55</td><td>$0.50</td></tr>
+	 <tr id="row17"><td>19:55 - 20:00</td><td>$0.25</td></tr>
+	 <tr id="row18"><td>20:00 - 22:30</td><td>$0.00</td></tr>
+</table>
+<script type="text/javascript">_satellite.pageBottom();</script>
