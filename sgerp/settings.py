@@ -128,4 +128,23 @@ os.environ["MAPBOX_ACCESS_TOKEN"] = MAPBOX_KEY
 ERP_RATES_FILE = os.path.join(BASE_DIR, 'erprates.json')
 ERP_GEODATA = os.path.join(BASE_DIR, 'onemaperp.json')
 HTML_PRICES_DIR = os.path.join(BASE_DIR, 'djsgerp/html_prices')
+GANTRY_KML = os.path.join(BASE_DIR, 'djsgerp/erp_gantry_may2016/erp-kml-0.kml')
 
+VEHICLE_KINDS = {
+    'Cars/Light Goods/Taxi': {
+        'Weekdays': '0',
+        'Saturday': '1',
+     },
+     'Motorcycles': {
+         'Weekdays': '2',
+         'Saturday': '3',
+     },
+     'Heavy Goods/Small Buses': {
+         'Weekdays': '4',
+         'Saturday': '5',
+     },
+     'Very Heavy Goods/Big Buses': {
+         'Weekdays': '6',
+         'Saturday': '7',
+     },
+}

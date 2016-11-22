@@ -16,24 +16,7 @@ class Command(BaseCommand):
         self.output_filename_gantry = 'gantry_{}.html'
         self.output_filename_vehiclekind = 'gantry_{}_vehiclekind_{}.html'
 
-        self.vehicle_kinds = {
-          'Cars/Light Goods/Taxi': {
-               'Weekdays': '0',
-               'Saturday': '1',
-          },
-          'Motorcycles': {
-               'Weekdays': '2',
-               'Saturday': '3',
-          },
-          'Heavy Goods/Small Buses': {
-               'Weekdays': '4',
-               'Saturday': '5',
-          },
-          'Very Heavy Goods/Big Buses': {
-               'Weekdays': '6',
-               'Saturday': '7',
-          },
-        }
+        self.vehicle_kinds = settings.VEHICLE_KINDS
 
         for s in range(68, 94):
             resp = requests.get(self.urltemplate_base.format(s))

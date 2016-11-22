@@ -14,6 +14,8 @@ class GantryPosition(models.Model):
     lonsvy = models.DecimalField(max_digits=15, decimal_places=8, verbose_name=_("Longitude SVY21"), help_text=_("Location in SVY21"))
     latsvy2 = models.DecimalField(max_digits=15, decimal_places=8, verbose_name=_("Latitude SVY21"), help_text=_("Location in SVY21"))
     lonsvy2 = models.DecimalField(max_digits=15, decimal_places=8, verbose_name=_("Longitude SVY21"), help_text=_("Location in SVY21"))
+    name = models.CharField(max_length=80, verbose_name="Gantry position name", blank=True, null=True)
+    external_id = models.CharField(max_length=80, verbose_name="External ID", blank=True, null=True)
 
     def __unicode__(self):
         return "{}: {}, {}".format(self.id, int(self.latsvy), int(self.lonsvy))

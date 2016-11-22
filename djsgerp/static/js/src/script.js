@@ -230,9 +230,13 @@ app.showerpcost = function(f){
     for (var i in data.data) {
       var gc = new GantryCross(data.data[i]);
       app.collections['gantrycrosses'].add(gc);
-      var line = '<div class="cursored" style="padding:5px" onclick="app.showgantrycross(\''+gc.cid+'\')"> Gantry ID ' + data.data[i]['gantry_id'] + ' at ' + data.data[i]['a']['tsc'] + ' and ' + data.data[i]['b']['tsc'] + '</div>';
+      var line = '<div><div class="cursored col-xs-10" style="padding:5px" onclick="app.showgantrycross(\''+gc.cid+'\')"> Gantry ID ';
+      line += data.data[i]['gantry_id'] + ' at ' + data.data[i]['a']['tsc'] + ' and ' + data.data[i]['b']['tsc'] + '</div>';
+      line += '<div class="col-xs-2">$'+ data.data[i].charged + '</div></div>';
       $("#erp_crosses_holder").append(line);
     }
+    var line = '<div class="col-xs-12" style="padding:5px">Total charge estimation: $' + data.charge_estimation + '</div>';
+    $("#erp_crosses_holder").append(line);
   });
 
 }

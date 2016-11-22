@@ -15,7 +15,7 @@ from django.shortcuts import render
 from django.conf import settings
 from django.http import JsonResponse, HttpResponse
 
-from djsgerp.models import GantryPosition
+from djsgerp.models import GantryPosition, GantryPriceElement, VehicleType
 
 svy21 = r'+proj=tmerc +lat_0=1.366666666666667 +lon_0=103.8333333333333 +k=1 +x_0=28001.642 +y_0=38744.572 +ellps=WGS84 +units=m +no_defs'
 
@@ -112,6 +112,8 @@ def crossgantry(request):
     gantrycache = []
     gantryidx = []
     gantrylatlons = []
+    vehicle_type = VehicleType.objects.get(name='Heavy Goods/Small Buses')
+    daytype = 'Weekdays'
     for g in gantrypositions:
         p1 = (utm.from_latlon(g.lat, g.lon)[0], utm.from_latlon(g.lat, g.lon)[1])
         p2 = (utm.from_latlon(g.lat2, g.lon2)[0], utm.from_latlon(g.lat2, g.lon2)[1])
@@ -120,6 +122,7 @@ def crossgantry(request):
         gantryidx.append(g.id)
         gantrylatlons.append({'lat': (g.lat + g.lat2)/2, 'lon': (g.lon + g.lon2)/2})
     gantrycrosses = []
+    charge_total = 0.
     for c in corrected_res:
         if prev is not None:
             p1 = (utm.from_latlon(c['lat'], c['lon'])[0], utm.from_latlon(c['lat'], c['lon'])[1])
@@ -130,9 +133,17 @@ def crossgantry(request):
             if idx_intersects:
                 gantry_id = gantryidx[idx_intersects[0]]
                 gantry_pos = gantrylatlons[idx_intersects[0]]
-                gantrycrosses.append({'gantry_id': gantry_id, 'gantry_position': gantry_pos, 'b': c, 'a': prev})
+                y = (c['utsc'] + prev['utsc']) * 0.5
+                times = datetime.datetime.fromtimestamp(int(y))
+                price = None
+                try:
+                    price = GantryPriceElement.objects.get(gantry_position=gantry_id, start_time__lte=times, end_time__gte=times, vehicle_type=vehicle_type, daytype=daytype).charge_amount
+                    charge_total += price
+                except:
+                    pass
+                gantrycrosses.append({'gantry_id': gantry_id, 'gantry_position': gantry_pos, 'b': c, 'a': prev, 'charged': price})
         prev = c
-    return JsonResponse({'data': gantrycrosses})
+    return JsonResponse({'data': gantrycrosses, 'charge_estimation': charge_total})
 
 
 def matchmake_fn(v):
