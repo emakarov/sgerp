@@ -33,9 +33,10 @@ def vehicle_data(request):
     v = request.GET['q']
     f = os.path.join(settings.VEHICLE_LOGS_DIR, v)
     pts = []
-    with open(f, 'rb') as csvfile:
+    with open(f, 'r') as csvfile:
         reader = csv.reader(csvfile, delimiter='|')
-        reader.next()
+#        reader.next()
+        next(reader)
         for row in reader:
             pts.append({
                 'ts': row[0],
@@ -151,9 +152,10 @@ def matchmake_fn(v):
     f = os.path.join(settings.VEHICLE_LOGS_DIR, v)
     pts = []
     f_cor = os.path.join(settings.VEHICLE_LOGS_DIR, 'corrected/' + v)
-    with open(f, 'rb') as csvfile:
+    with open(f, 'r') as csvfile:
         reader = csv.reader(csvfile, delimiter='|')
-        reader.next()
+#        reader.next()
+        next(reader)
         for row in reader:
             pts.append({
                 'ts': row[0],
