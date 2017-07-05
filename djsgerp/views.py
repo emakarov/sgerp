@@ -21,6 +21,7 @@ svy21 = r'+proj=tmerc +lat_0=1.366666666666667 +lon_0=103.8333333333333 +k=1 +x_
 
 
 def index(request):
+    """index file"""
     return render(request, 'djsgerp/index.html', {})
 
 
@@ -168,7 +169,10 @@ def matchmake_fn(v):
     corrected_complete_times = []
     while len(pts[i*100:i*100+100]) > 0:
         sub_pts = pts[i*100:i*100+100]
-        corrected = correct(sub_pts, v, i)
+        try:
+            corrected = correct(sub_pts, v, i)
+        except:
+            return [], [], []
         feature_idx = 0
         for feature in corrected:
             matched_points = feature['properties']['matchedPoints']
@@ -232,8 +236,11 @@ def correct(pts, v, i):
             "coordinates": coordinates
         }
     }
+    print(coordinates)
+
     service = MapMatcher(access_token=settings.MAPBOX_KEY)
     response = service.match(line, profile='mapbox.driving')
+    print(response, response.geojson())
     corrected = response.geojson()['features']
     # save result to simple file cache
     file = open(f_cor, 'w')
